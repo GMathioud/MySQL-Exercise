@@ -1,4 +1,4 @@
---TODO: Add "Sysxetiseis" tables if needed.
+#TODO: Add "Sysxetiseis" tables if needed.
 
 DROP DATABASE IF EXISTS db;
 CREATE DATABASE db;
@@ -9,7 +9,7 @@ CREATE TABLE DHMOTHS(
 	DHM_SURNAME VARCHAR(30) NOT NULL,
 	AMKA INT NOT NULL,
 	PRIMARY KEY (AMKA)
-	--TODO: Foreign key
+	#TODO: Foreign key
 	);
     
 CREATE TABLE YPHRESIA(
@@ -17,7 +17,7 @@ CREATE TABLE YPHRESIA(
 	YP_DAYS INT NOT NULL,
 	YP_ID INT(3) NOT NULL,
 	PRIMARY KEY (ID)
-	--TODO: Foreign key
+	#TODO: Foreign key
 	);
     
 CREATE TABLE MERIDA(
@@ -25,17 +25,17 @@ CREATE TABLE MERIDA(
 	MER_POP INT,
 	MER_ID INT(5) NOT NULL,
 	PRIMARY KEY (MER)
-	--TODO: Foreign key
+	#TODO: Foreign key
 	);
 	
---New tables needed for the 4th part of the exercise.
+#New tables needed for the 4th part of the exercise.
 
 CREATE TABLE ETAIRIA(
 	ET_NAME VARCHAR(30) NOT NULL,
 	ET_POP INT,
 	ET_ID VARCHAR(3) NOT NULL,
 	PRIMARY KEY (ET_ID) 
-	--TODO: Foreign key
+	#TODO: Foreign key
 	);
 
 CREATE TABLE MANAGER(
@@ -43,7 +43,7 @@ CREATE TABLE MANAGER(
 	MAN_SURNAME VARCHAR(30) NOT NULL,
 	MAN_ID INT(4) NOT NULL,
 	PRIMARY KEY (MAN_ID)
-	--TODO: Foreign key
+	#Foreign key of ETAIRIA:
 	);
 
 CREATE TABLE OFFICE(
@@ -51,7 +51,7 @@ CREATE TABLE OFFICE(
 	OFF_FLOOR INT(2),
 	OFF_ID VARCHAR(3) NOT NULL,
 	PRIMARY KEY (OFF_ID)
-	--TODO: Foreign key
+	#TODO: Foreign key
 	);
 
 CREATE TABLE REGISTRY(
@@ -59,7 +59,7 @@ CREATE TABLE REGISTRY(
 	R_POP INT,
 	R_ID INT NOT NULL,
 	PRIMARY KEY (R_ID)
-	--TODO: Foreign key
+	#TODO: Foreign key
 	);
 
 CREATE TABLE POLICE(
@@ -67,5 +67,5 @@ CREATE TABLE POLICE(
 	P_SURNAME VARCHAR(30) NOT NULL,
 	P_ID INT(4),
 	PRIMARY KEY (P_ID)
-	--TODO: Foreign key
+	#TODO: Foreign key
 	);
