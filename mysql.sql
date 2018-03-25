@@ -1,4 +1,4 @@
-#TODO: Add "Sysxetiseis" tables if needed.
+#TODO: Add "Sysxetiseis" tables if needed.#
 
 DROP DATABASE IF EXISTS db;
 CREATE DATABASE db;
