@@ -1,6 +1,8 @@
-DROP DATABASE IF EXISTS db;
-CREATE DATABASE db;
-USE db;
+#DROP DATABASE IF EXISTS db;
+#CREATE DATABASE db;
+DROP DATABASE IF EXISTS student_1813;
+CREATE DATABASE student_1813;
+USE student_1813;
 
 CREATE TABLE MERIDA(
 	MER_DATE DATE NOT NULL,
@@ -26,12 +28,12 @@ CREATE TABLE YPHRESIA(
 	PRIMARY KEY (YP_ID)
 	);
     
-#New tables needed for the 4th part of the exercise.
+#==== New tables needed for the 4th part of the exercise. ====
 
 CREATE TABLE ETAIRIA(
 	ET_NAME VARCHAR(30) NOT NULL,
-	ET_POP INT,
 	ET_ID VARCHAR(3) NOT NULL,
+    ET_POP INT,
 	PRIMARY KEY (ET_ID),
 	#Foreign key of DHMOTHS:
 	ET_AMKA INT NOT NULL,
@@ -41,7 +43,7 @@ CREATE TABLE ETAIRIA(
 CREATE TABLE MANAGER(
 	MAN_NAME VARCHAR(20) NOT NULL,
 	MAN_SURNAME VARCHAR(30) NOT NULL,
-	MAN_ID INT(4) NOT NULL,
+	MAN_ID VARCHAR(3) NOT NULL,
 	PRIMARY KEY (MAN_ID),
 	#Foreign key of ETAIRIA:
 	MAN_ET_ID VARCHAR(3) NOT NULL,
@@ -49,7 +51,7 @@ CREATE TABLE MANAGER(
 	);
 
 CREATE TABLE OFFICE(
-	OFF_NAME VARCHAR(30),
+	OFF_NAME VARCHAR(20),
 	OFF_FLOOR INT(2),
 	OFF_ID VARCHAR(3) NOT NULL,
 	PRIMARY KEY (OFF_ID),
@@ -61,21 +63,22 @@ CREATE TABLE OFFICE(
 CREATE TABLE POLICE(
 	P_NAME VARCHAR(20) NOT NULL,
 	P_SURNAME VARCHAR(30) NOT NULL,
-	P_ID INT(4),
+    P_RANK VARCHAR(20) NOT NULL,
+	P_ID INT(4) NOT NULL,
 	PRIMARY KEY (P_ID)
 	);
     
 CREATE TABLE REGISTRY(
 	R_TITLE VARCHAR(30) NOT NULL,
 	R_POP INT,
-	R_ID INT NOT NULL,
+	R_ID INT(5) NOT NULL,
 	PRIMARY KEY (R_ID),
 	#Foreign key of POLICE
 	R_P_ID INT(4) NOT NULL,
 	FOREIGN KEY (R_P_ID) REFERENCES POLICE(P_ID)
 	);
-    
-#Relationship TABLES
+	
+#==== Relationship TABLES ====
 
 #Relationship between DHMOTHS <-> REGISTRY
 CREATE TABLE HAS(
@@ -94,3 +97,57 @@ CREATE TABLE given(
 	FOREIGN KEY (GIVEN_YP_ID) REFERENCES YPHRESIA(YP_ID),
 	FOREIGN KEY (GIVEN_AMKA) REFERENCES DHMOTHS(AMKA)
 	);
+    
+#==== DUMMY DATA INSERTION ====
+
+INSERT INTO YPHRESIA VALUES
+	('Πληρωμή ΔΕΗ','30','002'),
+    ('Πληρωμή Προστίμων','360','010'),
+    ('Πληρωμή ΕΝΦΙΑ','120','012');
+    
+INSERT INTO MERIDA VALUES
+	('99-11-02','30','10024'),
+    ('95-05-24','4','10094'),
+    ('05-11-16','63','10102');
+    
+INSERT INTO DHMOTHS VALUES
+	('George',' Raptis','160297005','10024'),
+	('Panos', 'Dimitriou','230599004','10024'),
+    ('Diamantis','Michelakos','120566005','10102'),
+    ('Dimitris','Xaralampiou','0107990021','10094');
+    
+INSERT INTO ETAIRIA VALUES
+	('Έκδοση ΑΦΜ','D01','1','160297005'),
+    ('Βεβαιώσεις Συντάξεων','D02','1','230599004'),
+    ('Χορήγηση Επιδόματος','D05','1','120566005');
+    
+INSERT INTO MANAGER VALUES
+	('Giannis','Tiropoulos','M01','D01'),
+    ('Manos','Charopakis','M02','D02'),
+    ('Petros','Iakomatis','M03','D05');
+    
+INSERT INTO OFFICE VALUES
+	('GRAFEIO 4','02','104','D01'),
+    ('GRAFEIO 5','02','105','D05'),
+    ('GRAFEIO 2','01','102','D02');
+    
+INSERT INTO POLICE VALUES
+	('George', 'Nikolaou','DIOIKHTHS','1052'),
+    ('Nikos','Thanasiou','YPASTYNOMOS','1019'),
+    ('Vaggelis','Piliakis','ASTYNOMOS','1092');
+    
+INSERT INTO REGISTRY VALUES
+	('Ληστεία Κατοικίας','165','10254','1052'),
+    ('Φόνος εν βρασμό ψυχής','19','12502','1019'),
+    ('Ληστεία Τράπεζας','7','19400','1092');
+    
+INSERT INTO HAS VALUES
+	('230599004','10254'),
+    ('230599004','12502'),
+    ('160297005','19400');
+
+INSERT INTO GIVEN VALUES
+	('010','230599004'),
+    ('002','160297005'),
+	('012','160297005'),
+    ('012','120566005');
