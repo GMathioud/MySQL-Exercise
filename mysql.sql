@@ -119,7 +119,10 @@ INSERT INTO YPALLHLOS VALUES
 	('23430399','Giannis','Xarilakis','002'),
 	('19245124','Iwanna','Parisiou','010'),
 	('12943852','Lefteris','Sifoudakis','012'),
-	('12394389','Xaralampos','Eleutheriou','012');
+	('12394389','Xaralampos','Eleutheriou','012'),
+	('23593093','Giannis','Tiropoulos','002'),
+	('50023944','Manos','Charopakis','010'),
+	('29350233','Petros','Iakomatis','012');
 
 INSERT INTO SALARY (SAL_ID,SAL_DATE,SAL_PAID) VALUES
 	('23593093','2018-03-01','2000'),
